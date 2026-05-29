@@ -23,7 +23,7 @@ This project investigates the long-term trends and relationship between two majo
 ---
 
 ## 🔑 Keywords
-Greenhouse Gases, Linear Regression, $CO_2$, $CH_4$, Environmental Engineering, Data Analytics.
+greenhouse gases, carbon dioxide, methane, Cape Grim, predictive model.
 
 ---
 
