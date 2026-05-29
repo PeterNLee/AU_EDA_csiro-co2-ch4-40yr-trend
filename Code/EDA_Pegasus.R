@@ -106,7 +106,11 @@ ggplot(df_clean, aes(y = CO2.ppm.)) +
   theme_bw() +
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
+# 5. Counting Outliers
 
+co2_outliers <- boxplot.stats(df_clean$CO2.ppm.)$out
+print("Detected Outliers within CO2 Data:")
+print(co2_outliers)
 
 
 
@@ -150,7 +154,7 @@ upper_ch4 <- ch4_summary_stats$Q3 + (1.5 * iqr_ch4)
 cat("CH4 Lower bound for outliers:", lower_ch4, "\n")
 cat("CH4 Upper bound for outliers:", upper_ch4, "\n")
 
-# 4. Boxplot Visualization
+# 4. Boxplot Visualisation
 
 ggplot(df_clean, aes(y = CH4.ppb.)) +
   geom_boxplot(fill = "darkgreen", color = "black") +
@@ -159,6 +163,11 @@ ggplot(df_clean, aes(y = CH4.ppb.)) +
   theme_bw() +
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
+# 5. Counting Outliers
+
+ch4_outliers <- boxplot.stats(df_clean$CH4.ppb.)$out
+print("Detected Outliers within CH4 Data:")
+print(ch4_outliers)
 
 
 
@@ -407,3 +416,5 @@ ggplot() +
   theme_bw() + 
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
+
+# End of the script
