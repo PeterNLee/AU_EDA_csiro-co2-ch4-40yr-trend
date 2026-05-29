@@ -193,7 +193,7 @@ ggplot(df_clean, aes(x = CO2.ppm., y = CH4.ppb., color = DATE.x)) +
 # 2. Correlation Analysis
 
 r_bivariate <- cor(df_clean$CO2.ppm., df_clean$CH4.ppb., use = "complete.obs")
-print("Correlation coefficient (r):")
+print("Correlation coefficient:")
 print(r_bivariate)
 
 
@@ -304,7 +304,7 @@ summary(ch4_aov_model)
 
 ggplot(decade_data, aes(y = Calculated.GR.ppb.per.day, fill = Decade)) +
   geom_boxplot() +
-  labs(, y = "Growth Rate (ppb/day)", fill= "Decade", title = expression(CH[4]~Growth~Rates~by~Decade))+
+  labs(y = "Growth Rate (ppb/day)", fill= "Decade", title = expression(CH[4]~Growth~Rates~by~Decade))+
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold"))+
   scale_fill_manual(values = c("#00BFFF", "#00A0AA", "#008255", "#006400"))
@@ -324,6 +324,18 @@ co2_model <- lm(CO2.ppm. ~ DATE.x, data = df_clean)
 
 print("Summary of CO2 Linear Regression model")
 summary(co2_model)
+
+# Correlation Check
+ggplot(df_clean, aes(x = DATE.x, y = CO2.ppm.)) +
+  geom_point() +
+  labs(x = "Year",
+       y = expression(CO[2]~Concentration~(ppm)), 
+       title = expression(CO[2]~Concentration~Trend))+
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+
+print("Correlation coefficient:")
+print(cor(df_clean$DATE.x, df_clean$CO2.ppm.))
 
 
 # 2. Check Linear Regression Assumptions
@@ -377,6 +389,18 @@ ch4_model <- lm(CH4.ppb. ~ DATE.y, data = df_clean)
 print("Summary of CH4 Linear Regression model")
 summary(ch4_model)
 
+# Correlation Check
+ggplot(df_clean, aes(x = DATE.y, y = CH4.ppb.)) +
+  geom_point() +
+  labs(x = "Year",
+       y = expression(CH[4]~Concentration~(ppb)), 
+       title = expression(CH[4]~Concentration~Trend))+
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+
+print("Correlation coefficient:")
+print(cor(df_clean$DATE.y, df_clean$CH4.ppb.))
+
 
 # 2. Check Linear Regression Assumptions
 
@@ -416,5 +440,4 @@ ggplot() +
   theme_bw() + 
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
-
-# End of the script
+# End of the Script
